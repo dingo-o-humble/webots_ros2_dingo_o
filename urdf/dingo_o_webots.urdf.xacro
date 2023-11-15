@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<robot name="dingo" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find dingo_description)/urdf/dingo-o.urdf.xacro" />
+
+  <link name="Velodyne_Puck">
+    <visual>
+      <origin xyz="0 -0.00165 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.052" length="0.0727"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 -0.00165 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.052" length="0.0727"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="chassis_link_Velodyne_Puck_joint" type="fixed">
+    <parent link="chassis_link"/>
+    <child link="Velodyne_Puck"/>
+    <origin xyz="0.23 -0.14 0.14" rpy="0 0 0"/>
+  </joint>
+
+</robot>

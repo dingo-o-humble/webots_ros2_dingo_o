@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<robot name="Dingo">
+    <webots>
+        <plugin type="webots_ros2_control::Ros2Control" />
+
+        <plugin type="webots_ros2_driver::Ros2IMU">
+            <enabled>true</enabled>
+            <topicName>/Dingo/imu</topicName>
+            <alwaysOn>true</alwaysOn>
+            <frameName>base_link</frameName>
+            <inertialUnitName>inertial unit</inertialUnitName>
+            <gyroName>gyro</gyroName>
+            <accelerometerName>accelerometer</accelerometerName>
+        </plugin>     
+    </webots>
+
+    <ros2_control name="WebotsControl" type="system">
+        <hardware>
+            <plugin>webots_ros2_control::Ros2ControlSystem</plugin>
+        </hardware>
+        <joint name="front_left_wheel">
+            <command_interface name="velocity">
+                </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="front_right_wheel">
+            <command_interface name="velocity">
+                </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="rear_left_wheel">
+            <command_interface name="velocity">
+                </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="rear_right_wheel">
+            <command_interface name="velocity">
+                </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+    </ros2_control>
+</robot>

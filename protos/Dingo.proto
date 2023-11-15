@@ -1,0 +1,296 @@
+#VRML_SIM R2023b utf8
+# license: Apache License 2.0
+# license url: http://www.apache.org/licenses/LICENSE-2.0
+# This is a proto file for Webots for the Dingo
+# Extracted from: /home/skpawar1305/dingo_ws/src/dingo/dingo_description/urdf/dingo-o.urdf
+
+PROTO Dingo [
+  field  SFVec3f     translation     0 0 0
+  field  SFRotation  rotation        0 0 1 0
+  field  SFString    name            "Dingo"  # Is `Robot.name`.
+  field  SFString    controller      "void"   # Is `Robot.controller`.
+  field  MFString    controllerArgs  []       # Is `Robot.controllerArgs`.
+  field  SFString    customData      ""       # Is `Robot.customData`.
+  field  SFBool      supervisor      FALSE    # Is `Robot.supervisor`.
+  field  SFBool      synchronization TRUE     # Is `Robot.synchronization`.
+  field  SFBool      selfCollision   FALSE    # Is `Robot.selfCollision`.
+  field  MFNode      extensions      []       # Extends the robot with new nodes
+]
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    controller IS controller
+    controllerArgs IS controllerArgs
+    customData IS customData
+    supervisor IS supervisor
+    synchronization IS synchronization
+    selfCollision IS selfCollision
+    children [
+      Solid {
+        children [
+          DEF omni_chassis_visual CadShape {
+            url "meshes/omni_chassis.dae"
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0.000000 1.000000 0.000000
+              anchor 0.285000 0.210400 0.035145
+            }
+            device [
+              RotationalMotor {
+                name "front_left_wheel"
+                maxTorque 10000
+              }
+              PositionSensor {
+                name "front_left_wheel_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0.285000 0.210400 0.035145
+              children [
+                Pose {
+                  rotation 1.000000 0.000000 0.000000 1.570796
+                  children [
+                    Shape {
+                      appearance DEF black PBRAppearance {
+                        baseColor 0.500000 0.500000 0.500000
+                        roughness 1.000000
+                        metalness 0
+                      }
+                      geometry Cylinder {
+                        radius 0.05
+                        height 0.05
+                      }
+                    }
+                  ]
+                }
+              ]
+              name "front_left_wheel_link"
+              contactMaterial "intWheelMat"
+              boundingObject Pose {
+                rotation 1.000000 0.000000 0.000000 1.570796
+                children [
+                  Cylinder {
+                    radius 0.05
+                    height 0.05
+                  }
+                ]
+              }
+              physics Physics {
+                density -1
+                mass 0.400000
+                centerOfMass [ 0.000000 0.000000 0.000000 ]
+                inertiaMatrix [
+                  3.234000e-04 3.234000e-04 4.901000e-04
+                  0.000000e+00 0.000000e+00 0.000000e+00
+                ]
+              }
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0.000000 1.000000 0.000000
+              anchor 0.285000 -0.210400 0.035145
+            }
+            device [
+              RotationalMotor {
+                name "front_right_wheel"
+                maxTorque 10000
+              }
+              PositionSensor {
+                name "front_right_wheel_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0.285000 -0.210400 0.035145
+              children [
+                Pose {
+                  rotation 1.000000 0.000000 0.000000 1.570796
+                  children [
+                    Shape {
+                      appearance USE black
+                      geometry Cylinder {
+                        radius 0.05
+                        height 0.05
+                      }
+                    }
+                  ]
+                }
+              ]
+              name "front_right_wheel_link"
+              contactMaterial "extWheelMat"
+              boundingObject Pose {
+                rotation 1.000000 0.000000 0.000000 1.570796
+                children [
+                  Cylinder {
+                    radius 0.05
+                    height 0.05
+                  }
+                ]
+              }
+              physics Physics {
+                density -1
+                mass 0.400000
+                centerOfMass [ 0.000000 0.000000 0.000000 ]
+                inertiaMatrix [
+                  3.234000e-04 3.234000e-04 4.901000e-04
+                  0.000000e+00 0.000000e+00 0.000000e+00
+                ]
+              }
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0.000000 1.000000 0.000000
+              anchor -0.285000 0.210400 0.035145
+            }
+            device [
+              RotationalMotor {
+                name "rear_left_wheel"
+                maxTorque 10000
+              }
+              PositionSensor {
+                name "rear_left_wheel_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation -0.285000 0.210400 0.035145
+              children [
+                Pose {
+                  rotation 1.000000 0.000000 0.000000 1.570796
+                  children [
+                    Shape {
+                      appearance USE black
+                      geometry Cylinder {
+                        radius 0.05
+                        height 0.05
+                      }
+                    }
+                  ]
+                }
+              ]
+              name "rear_left_wheel_link"
+              contactMaterial "extWheelMat"
+              boundingObject Pose {
+                rotation 1.000000 0.000000 0.000000 1.570796
+                children [
+                  Cylinder {
+                    radius 0.05
+                    height 0.05
+                  }
+                ]
+              }
+              physics Physics {
+                density -1
+                mass 0.400000
+                centerOfMass [ 0.000000 0.000000 0.000000 ]
+                inertiaMatrix [
+                  3.234000e-04 3.234000e-04 4.901000e-04
+                  0.000000e+00 0.000000e+00 0.000000e+00
+                ]
+              }
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0.000000 1.000000 0.000000
+              anchor -0.285000 -0.210400 0.035145
+            }
+            device [
+              RotationalMotor {
+                name "rear_right_wheel"
+                maxTorque 10000
+              }
+              PositionSensor {
+                name "rear_right_wheel_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation -0.285000 -0.210400 0.035145
+              children [
+                Pose {
+                  rotation 1.000000 0.000000 0.000000 1.570796
+                  children [
+                    Shape {
+                      appearance USE black
+                      geometry Cylinder {
+                        radius 0.05
+                        height 0.05
+                      }
+                    }
+                  ]
+                }
+              ]
+              name "rear_right_wheel_link"
+              contactMaterial "intWheelMat"
+              boundingObject Pose {
+                rotation 1.000000 0.000000 0.000000 1.570796
+                children [
+                  Cylinder {
+                    radius 0.05
+                    height 0.05
+                  }
+                ]
+              }
+              physics Physics {
+                density -1
+                mass 0.400000
+                centerOfMass [ 0.000000 0.000000 0.000000 ]
+                inertiaMatrix [
+                  3.234000e-04 3.234000e-04 4.901000e-04
+                  0.000000e+00 0.000000e+00 0.000000e+00
+                ]
+              }
+            }
+          }
+          Solid {
+            children [
+              InertialUnit {
+                name "inertial unit"
+              }
+              Accelerometer {
+                name "accelerometer"
+              }
+              Gyro {
+                name "gyro"
+              }
+              Compass {
+                name "compass"
+              }
+            ]
+            name "imu_link"
+            physics Physics {
+              density -1
+              mass 0.001000
+              centerOfMass [ 0.000000 0.000000 0.000000 ]
+              inertiaMatrix [
+                1.000000e-09 1.000000e-09 1.000000e-09
+                0.000000e+00 0.000000e+00 0.000000e+00
+              ]
+            }
+          }
+          Transform {
+            children IS extensions
+          }
+        ]
+        name "chassis_link"
+        boundingObject DEF omni_chassis_collision Mesh {
+          url "meshes/omni_chassis_collision.stl"
+        }
+        physics Physics {
+          density -1
+          mass 14.000000
+          centerOfMass [ 0.000000 0.000000 0.000000 ]
+          inertiaMatrix [
+            3.549800e-01 7.266000e-01 1.055300e+00
+            0.000000e+00 0.000000e+00 0.000000e+00
+          ]
+        }
+      }
+    ]
+    name IS name
+    physics Physics {
+    }
+  }
+}
